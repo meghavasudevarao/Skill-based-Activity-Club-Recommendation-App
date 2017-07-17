@@ -1,0 +1,7 @@
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\TextMiner\bin\Debug\TextMiner.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\TextMiner\bin\Debug\TextMiner.pdb
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\TextMiner\obj\Debug\TextMiner.csprojResolveAssemblyReference.cache
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\TextMiner\obj\Debug\TextMiner.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\TextMiner\obj\Debug\TextMiner.pdb
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\TextMiner\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\TextMiner\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml

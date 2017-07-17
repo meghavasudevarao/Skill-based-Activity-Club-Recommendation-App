@@ -1,0 +1,2085 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CSIVangaurd_DevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="AppID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ApplicationDescription" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\RAOME\DESKTOP\C#TRIALS\CLUBNYITSERVICES\CLUBNYITDATAACCESS\CSIVANGAURD_DEV.MDF.dbo.Authentication' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Authentication">
+          <Key>
+            <PropertyRef Name="AuthToken" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedDateTime" />
+          </Key>
+          <Property Name="AuthToken" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="APIKey" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DataSourceURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ForgotUserNameURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ForgotPasswordURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FeedBackEmailId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CompanyAppImages">
+          <Key>
+            <PropertyRef Name="ImageID" />
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AppID" Type="int" Nullable="false" />
+          <Property Name="ImageURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CompanyAppInfo">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="CompanyID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AppID" Type="int" Nullable="false" />
+          <Property Name="CompanyAppName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CompanyAppDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CompanyAppRetinaIconURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CompanyAppNonRetinaIconURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IconColor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RetinaSplashScreenURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NonRetinaSplashScreenURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdaedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CompanyTheme">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="AppID" />
+            <PropertyRef Name="UIThemeID" />
+          </Key>
+          <Property Name="CompanyID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AppID" Type="int" Nullable="false" />
+          <Property Name="UIThemeID" Type="bigint" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="AppliedAt" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreateDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="SiteID" />
+          </Key>
+          <Property Name="SiteID" Type="int" Nullable="false" />
+          <Property Name="SiteName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CompanyID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SiteAppThemeType">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="SiteID" />
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="CompanyID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SiteID" Type="int" Nullable="false" />
+          <Property Name="AppID" Type="int" Nullable="false" />
+          <Property Name="hasDefaultTheme" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SiteTheme">
+          <Key>
+            <PropertyRef Name="SiteID" />
+            <PropertyRef Name="AppID" />
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="UIThemeID" />
+          </Key>
+          <Property Name="SiteID" Type="int" Nullable="false" />
+          <Property Name="AppID" Type="int" Nullable="false" />
+          <Property Name="CompanyID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UIThemeID" Type="bigint" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="AppliedAt" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UIControl">
+          <Key>
+            <PropertyRef Name="UIControlID" />
+          </Key>
+          <Property Name="UIControlID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UIControlName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AllowToCustomise" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UIControlPropertyCategory">
+          <Key>
+            <PropertyRef Name="UIControlPropertyID" />
+          </Key>
+          <Property Name="UIControlPropertyID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UIControlID" Type="int" Nullable="false" />
+          <Property Name="UIPropertyCategoryID" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UIProperty">
+          <Key>
+            <PropertyRef Name="UIPropertyID" />
+          </Key>
+          <Property Name="UIPropertyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UIPropertyName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDatetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UIPropertyCategory">
+          <Key>
+            <PropertyRef Name="UIPropertyCategoryID" />
+          </Key>
+          <Property Name="UIPropertyCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UIPropertyCategoryName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="UIPropertyCategoryParent" Type="int" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UIPropertyPropertyCategory">
+          <Key>
+            <PropertyRef Name="UIPropertyPropertyCategoryID" />
+          </Key>
+          <Property Name="UIPropertyPropertyCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UIPropertyCategoryID" Type="int" Nullable="false" />
+          <Property Name="UIPropertyID" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UITheme">
+          <Key>
+            <PropertyRef Name="UIThemeID" />
+          </Key>
+          <Property Name="UIThemeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UIThemeName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="RetinaBackgroundImageURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NonRetinaBackgroundImageURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UIThemePopertyColor">
+          <Key>
+            <PropertyRef Name="UIThemeID" />
+            <PropertyRef Name="UIPropertyPropertyCategoryID" />
+          </Key>
+          <Property Name="UIThemeID" Type="bigint" Nullable="false" />
+          <Property Name="UIPropertyPropertyCategoryID" Type="int" Nullable="false" />
+          <Property Name="Color" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CompanyID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RoleID" Type="smallint" Nullable="false" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_CompanyAppImages_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="CompanyAppImages" Type="Self.CompanyAppImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="AppID" />
+            </Principal>
+            <Dependent Role="CompanyAppImages">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyAppImages_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyAppImages" Type="Self.CompanyAppImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="CompanyAppImages">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyTheme_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="CompanyTheme" Type="Self.CompanyTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="AppID" />
+            </Principal>
+            <Dependent Role="CompanyTheme">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyTheme_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyTheme" Type="Self.CompanyTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="CompanyTheme">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyTheme_UITheme">
+          <End Role="UITheme" Type="Self.UITheme" Multiplicity="1" />
+          <End Role="CompanyTheme" Type="Self.CompanyTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UITheme">
+              <PropertyRef Name="UIThemeID" />
+            </Principal>
+            <Dependent Role="CompanyTheme">
+              <PropertyRef Name="UIThemeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Site" Type="Self.Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAppThemeType_Application1">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="SiteAppThemeType" Type="Self.SiteAppThemeType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="AppID" />
+            </Principal>
+            <Dependent Role="SiteAppThemeType">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteTheme_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="SiteTheme" Type="Self.SiteTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="AppID" />
+            </Principal>
+            <Dependent Role="SiteTheme">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteTheme_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="SiteTheme" Type="Self.SiteTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="SiteTheme">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteTheme_Site">
+          <End Role="Site" Type="Self.Site" Multiplicity="1" />
+          <End Role="SiteTheme" Type="Self.SiteTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SiteTheme">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteTheme_UITheme">
+          <End Role="UITheme" Type="Self.UITheme" Multiplicity="1" />
+          <End Role="SiteTheme" Type="Self.SiteTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UITheme">
+              <PropertyRef Name="UIThemeID" />
+            </Principal>
+            <Dependent Role="SiteTheme">
+              <PropertyRef Name="UIThemeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UIControlPropertyCategory_UIPropertyCategory">
+          <End Role="UIPropertyCategory" Type="Self.UIPropertyCategory" Multiplicity="1" />
+          <End Role="UIControlPropertyCategory" Type="Self.UIControlPropertyCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UIPropertyCategory">
+              <PropertyRef Name="UIPropertyCategoryID" />
+            </Principal>
+            <Dependent Role="UIControlPropertyCategory">
+              <PropertyRef Name="UIPropertyCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UIPropertyCategory_UIPropertyCategory">
+          <End Role="UIPropertyCategory" Type="Self.UIPropertyCategory" Multiplicity="0..1" />
+          <End Role="UIPropertyCategory1" Type="Self.UIPropertyCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UIPropertyCategory">
+              <PropertyRef Name="UIPropertyCategoryID" />
+            </Principal>
+            <Dependent Role="UIPropertyCategory1">
+              <PropertyRef Name="UIPropertyCategoryParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UIPropertyPropertyCategory_UIProperty">
+          <End Role="UIProperty" Type="Self.UIProperty" Multiplicity="1" />
+          <End Role="UIPropertyPropertyCategory" Type="Self.UIPropertyPropertyCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UIProperty">
+              <PropertyRef Name="UIPropertyID" />
+            </Principal>
+            <Dependent Role="UIPropertyPropertyCategory">
+              <PropertyRef Name="UIPropertyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UIPropertyPropertyCategory_UIPropertyCategory">
+          <End Role="UIPropertyCategory" Type="Self.UIPropertyCategory" Multiplicity="1" />
+          <End Role="UIPropertyPropertyCategory" Type="Self.UIPropertyPropertyCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UIPropertyCategory">
+              <PropertyRef Name="UIPropertyCategoryID" />
+            </Principal>
+            <Dependent Role="UIPropertyPropertyCategory">
+              <PropertyRef Name="UIPropertyCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UIThemePopertyColor_UIPropertyPropertyCategory">
+          <End Role="UIPropertyPropertyCategory" Type="Self.UIPropertyPropertyCategory" Multiplicity="1" />
+          <End Role="UIThemePopertyColor" Type="Self.UIThemePopertyColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UIPropertyPropertyCategory">
+              <PropertyRef Name="UIPropertyPropertyCategoryID" />
+            </Principal>
+            <Dependent Role="UIThemePopertyColor">
+              <PropertyRef Name="UIPropertyPropertyCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="uspAddAppImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="lvAppID" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="lvCreatedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspAddAppInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="lvAppID" Type="int" Mode="In" />
+          <Parameter Name="CompanyAppName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CompanyAppDescription" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CompanyAppRetinaIconURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CompanyAppNonRetinaIconURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="IconColor" Type="nvarchar" Mode="In" />
+          <Parameter Name="RetinaSplashScreenURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NonRetinaSplashScreenURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="lvCreatedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedCompanyAppName" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="uspAddAuthentication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="AuthToken" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="AddedAuthToken" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="uspAddCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ForgotUserNameURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ForgotPasswordURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FeedBackEmailId" Type="nvarchar" Mode="In" />
+          <Parameter Name="APIKey" Type="nvarchar" Mode="In" />
+          <Parameter Name="DataSourceURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="lvCreatedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="CreatedCompanyID" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="uspAddCompanyTheme" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="lvAppID" Type="int" Mode="In" />
+          <Parameter Name="CreatedUIThemeID" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="lvCreatedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspAddSite" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="lvCreatedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspAddSiteAppThemeType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="lvCreatedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspAddSiteTheme" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="SiteID" Type="int" Mode="In" />
+          <Parameter Name="lvAppID" Type="int" Mode="In" />
+          <Parameter Name="CreatedUIThemeID" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="lvCreatedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspAddUITheme" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UIThemeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="RetinaBackgroundImageURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NonRetinaBackgroundImageURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="lvCreatedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspAddUIThemePopertyColor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CreatedUIThemeID" Type="int" Mode="In" />
+          <Parameter Name="lvAppID" Type="int" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="lvCreatedDateTime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="uspAddUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleID" Type="int" Mode="In" />
+          <Parameter Name="EmailId" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="lvCreatedDateTime" Type="datetime" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="uspDeleteAuthentication" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AuthToken" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="isDeleted" Type="bit" Mode="InOut" />
+        </Function>
+        <Function Name="uspDeleteCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetAllAppType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspGetAllSiteThemeType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetAllUIPropertyCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="uspGetAppConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetAuthenticationDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AuthToken" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="uspGetCompanyBrandConfigDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetCompanyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetCompanyThemeDetails1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="int" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetCompanyThemes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetCompanyUIPropertyColor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UIPropertyCategoryID" Type="int" Mode="In" />
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetSiteBrandConfigDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="SiteID" Type="int" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetSiteThemes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="SiteID" Type="int" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetSiteUIPropertyColor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UIPropertyCategoryID" Type="int" Mode="In" />
+          <Parameter Name="SiteID" Type="int" Mode="In" />
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspGetThemeDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UIThemeID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="uspGetUIControl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UIPropertyCategoryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="uspGetUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="uspPagedCompanies" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StartIndex" Type="smallint" Mode="In" />
+          <Parameter Name="NoOfRows" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="uspRegisterCompanyUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ForgotUserNameURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ForgotPasswordURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FeedBackEmailId" Type="nvarchar" Mode="In" />
+          <Parameter Name="APIKey" Type="nvarchar" Mode="In" />
+          <Parameter Name="DataSourceURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailId" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleID" Type="int" Mode="In" />
+          <Parameter Name="CreatedCompanyID" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="UserID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="uspRegisterCompanyUser2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="CompanyName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ForgotUserNameURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ForgotPasswordURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="FeedBackEmailId" Type="nvarchar" Mode="In" />
+          <Parameter Name="APIKey" Type="nvarchar" Mode="In" />
+          <Parameter Name="DataSourceURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UserName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="EmailId" Type="nvarchar" Mode="In" />
+          <Parameter Name="RoleID" Type="int" Mode="In" />
+          <Parameter Name="CreatedCompanyID" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="UserID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="uspSaveAppConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+          <Parameter Name="CompanyAppName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CompanyAppDescription" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CompanyAppRetinaIconURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CompanyAppNonRetinaIconURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="IconColor" Type="nvarchar" Mode="In" />
+          <Parameter Name="RetinaSplashScreenURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NonRetinaSplashScreenURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="CreatedCompanyAppName" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="uspSaveCompanyBrandConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+          <Parameter Name="RetinaBackgroundImageURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NonRetinaBackgroundImageURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UIThemeID" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="uspSaveSiteBrandConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyID" Type="nvarchar" Mode="In" />
+          <Parameter Name="SiteID" Type="int" Mode="In" />
+          <Parameter Name="AppType" Type="nvarchar" Mode="In" />
+          <Parameter Name="RetinaBackgroundImageURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="NonRetinaBackgroundImageURL" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="CreatedBy" Type="int" Mode="In" />
+          <Parameter Name="UIThemeID" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="CSIVangaurd_DevModelStoreContainer">
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyAppImages" EntityType="Self.CompanyAppImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyAppInfo" EntityType="Self.CompanyAppInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyTheme" EntityType="Self.CompanyTheme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Site" EntityType="Self.Site" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteAppThemeType" EntityType="Self.SiteAppThemeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteTheme" EntityType="Self.SiteTheme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UIControl" EntityType="Self.UIControl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UIControlPropertyCategory" EntityType="Self.UIControlPropertyCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UIProperty" EntityType="Self.UIProperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UIPropertyCategory" EntityType="Self.UIPropertyCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UIPropertyPropertyCategory" EntityType="Self.UIPropertyPropertyCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UITheme" EntityType="Self.UITheme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UIThemePopertyColor" EntityType="Self.UIThemePopertyColor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authentication" EntityType="Self.Authentication" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Authentication].[AuthToken] AS [AuthToken], 
+    [Authentication].[UserName] AS [UserName], 
+    [Authentication].[CreatedBy] AS [CreatedBy], 
+    [Authentication].[CreatedDateTime] AS [CreatedDateTime]
+    FROM [dbo].[Authentication] AS [Authentication]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CompanyAppImages_Application" Association="Self.FK_CompanyAppImages_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="CompanyAppImages" EntitySet="CompanyAppImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyAppImages_Company" Association="Self.FK_CompanyAppImages_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyAppImages" EntitySet="CompanyAppImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyTheme_Application" Association="Self.FK_CompanyTheme_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="CompanyTheme" EntitySet="CompanyTheme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyTheme_Company" Association="Self.FK_CompanyTheme_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="CompanyTheme" EntitySet="CompanyTheme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyTheme_UITheme" Association="Self.FK_CompanyTheme_UITheme">
+            <End Role="UITheme" EntitySet="UITheme" />
+            <End Role="CompanyTheme" EntitySet="CompanyTheme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_Company" Association="Self.FK_Site_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Site" EntitySet="Site" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAppThemeType_Application1" Association="Self.FK_SiteAppThemeType_Application1">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="SiteAppThemeType" EntitySet="SiteAppThemeType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteTheme_Application" Association="Self.FK_SiteTheme_Application">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="SiteTheme" EntitySet="SiteTheme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteTheme_Company" Association="Self.FK_SiteTheme_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="SiteTheme" EntitySet="SiteTheme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteTheme_Site" Association="Self.FK_SiteTheme_Site">
+            <End Role="Site" EntitySet="Site" />
+            <End Role="SiteTheme" EntitySet="SiteTheme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteTheme_UITheme" Association="Self.FK_SiteTheme_UITheme">
+            <End Role="UITheme" EntitySet="UITheme" />
+            <End Role="SiteTheme" EntitySet="SiteTheme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UIControlPropertyCategory_UIPropertyCategory" Association="Self.FK_UIControlPropertyCategory_UIPropertyCategory">
+            <End Role="UIPropertyCategory" EntitySet="UIPropertyCategory" />
+            <End Role="UIControlPropertyCategory" EntitySet="UIControlPropertyCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UIPropertyCategory_UIPropertyCategory" Association="Self.FK_UIPropertyCategory_UIPropertyCategory">
+            <End Role="UIPropertyCategory" EntitySet="UIPropertyCategory" />
+            <End Role="UIPropertyCategory1" EntitySet="UIPropertyCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UIPropertyPropertyCategory_UIProperty" Association="Self.FK_UIPropertyPropertyCategory_UIProperty">
+            <End Role="UIProperty" EntitySet="UIProperty" />
+            <End Role="UIPropertyPropertyCategory" EntitySet="UIPropertyPropertyCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UIPropertyPropertyCategory_UIPropertyCategory" Association="Self.FK_UIPropertyPropertyCategory_UIPropertyCategory">
+            <End Role="UIPropertyCategory" EntitySet="UIPropertyCategory" />
+            <End Role="UIPropertyPropertyCategory" EntitySet="UIPropertyPropertyCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UIThemePopertyColor_UIPropertyPropertyCategory" Association="Self.FK_UIThemePopertyColor_UIPropertyPropertyCategory">
+            <End Role="UIPropertyPropertyCategory" EntitySet="UIPropertyPropertyCategory" />
+            <End Role="UIThemePopertyColor" EntitySet="UIThemePopertyColor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Company" Association="Self.FK_User_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CSIVangaurd_DevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="AppID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApplicationName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicationDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CompanyAppImages" Relationship="Self.FK_CompanyAppImages_Application" FromRole="Application" ToRole="CompanyAppImages" />
+          <NavigationProperty Name="CompanyThemes" Relationship="Self.FK_CompanyTheme_Application" FromRole="Application" ToRole="CompanyTheme" />
+          <NavigationProperty Name="SiteAppThemeTypes" Relationship="Self.FK_SiteAppThemeType_Application1" FromRole="Application" ToRole="SiteAppThemeType" />
+          <NavigationProperty Name="SiteThemes" Relationship="Self.FK_SiteTheme_Application" FromRole="Application" ToRole="SiteTheme" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="APIKey" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataSourceURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ForgotUserNameURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ForgotPasswordURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FeedBackEmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CompanyAppImages" Relationship="Self.FK_CompanyAppImages_Company" FromRole="Company" ToRole="CompanyAppImages" />
+          <NavigationProperty Name="CompanyThemes" Relationship="Self.FK_CompanyTheme_Company" FromRole="Company" ToRole="CompanyTheme" />
+          <NavigationProperty Name="Sites" Relationship="Self.FK_Site_Company" FromRole="Company" ToRole="Site" />
+          <NavigationProperty Name="SiteThemes" Relationship="Self.FK_SiteTheme_Company" FromRole="Company" ToRole="SiteTheme" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Company" FromRole="Company" ToRole="User" />
+        </EntityType>
+        <EntityType Name="CompanyAppImage">
+          <Key>
+            <PropertyRef Name="ImageID" />
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AppID" Type="Int32" Nullable="false" />
+          <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_CompanyAppImages_Application" FromRole="CompanyAppImages" ToRole="Application" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyAppImages_Company" FromRole="CompanyAppImages" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="CompanyAppInfo">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="CompanyID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AppID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyAppName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyAppDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyAppRetinaIconURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyAppNonRetinaIconURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IconColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RetinaSplashScreenURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NonRetinaSplashScreenURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdaedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CompanyTheme">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="AppID" />
+            <PropertyRef Name="UIThemeID" />
+          </Key>
+          <Property Name="CompanyID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AppID" Type="Int32" Nullable="false" />
+          <Property Name="UIThemeID" Type="Int64" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="AppliedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_CompanyTheme_Application" FromRole="CompanyTheme" ToRole="Application" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_CompanyTheme_Company" FromRole="CompanyTheme" ToRole="Company" />
+          <NavigationProperty Name="UITheme" Relationship="Self.FK_CompanyTheme_UITheme" FromRole="CompanyTheme" ToRole="UITheme" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Site">
+          <Key>
+            <PropertyRef Name="SiteID" />
+          </Key>
+          <Property Name="SiteID" Type="Int32" Nullable="false" />
+          <Property Name="SiteName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Site_Company" FromRole="Site" ToRole="Company" />
+          <NavigationProperty Name="SiteThemes" Relationship="Self.FK_SiteTheme_Site" FromRole="Site" ToRole="SiteTheme" />
+        </EntityType>
+        <EntityType Name="SiteAppThemeType">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="SiteID" />
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="CompanyID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SiteID" Type="Int32" Nullable="false" />
+          <Property Name="AppID" Type="Int32" Nullable="false" />
+          <Property Name="hasDefaultTheme" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_SiteAppThemeType_Application1" FromRole="SiteAppThemeType" ToRole="Application" />
+        </EntityType>
+        <EntityType Name="SiteTheme">
+          <Key>
+            <PropertyRef Name="SiteID" />
+            <PropertyRef Name="AppID" />
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="UIThemeID" />
+          </Key>
+          <Property Name="SiteID" Type="Int32" Nullable="false" />
+          <Property Name="AppID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UIThemeID" Type="Int64" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="AppliedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Application" Relationship="Self.FK_SiteTheme_Application" FromRole="SiteTheme" ToRole="Application" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_SiteTheme_Company" FromRole="SiteTheme" ToRole="Company" />
+          <NavigationProperty Name="Site" Relationship="Self.FK_SiteTheme_Site" FromRole="SiteTheme" ToRole="Site" />
+          <NavigationProperty Name="UITheme" Relationship="Self.FK_SiteTheme_UITheme" FromRole="SiteTheme" ToRole="UITheme" />
+        </EntityType>
+        <EntityType Name="UIControl">
+          <Key>
+            <PropertyRef Name="UIControlID" />
+          </Key>
+          <Property Name="UIControlID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UIControlName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AllowToCustomise" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="UIControlPropertyCategory">
+          <Key>
+            <PropertyRef Name="UIControlPropertyID" />
+          </Key>
+          <Property Name="UIControlPropertyID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UIControlID" Type="Int32" Nullable="false" />
+          <Property Name="UIPropertyCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UIPropertyCategory" Relationship="Self.FK_UIControlPropertyCategory_UIPropertyCategory" FromRole="UIControlPropertyCategory" ToRole="UIPropertyCategory" />
+        </EntityType>
+        <EntityType Name="UIProperty">
+          <Key>
+            <PropertyRef Name="UIPropertyID" />
+          </Key>
+          <Property Name="UIPropertyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UIPropertyName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDatetime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UIPropertyPropertyCategories" Relationship="Self.FK_UIPropertyPropertyCategory_UIProperty" FromRole="UIProperty" ToRole="UIPropertyPropertyCategory" />
+        </EntityType>
+        <EntityType Name="UIPropertyCategory">
+          <Key>
+            <PropertyRef Name="UIPropertyCategoryID" />
+          </Key>
+          <Property Name="UIPropertyCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UIPropertyCategoryName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UIPropertyCategoryParent" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UIControlPropertyCategories" Relationship="Self.FK_UIControlPropertyCategory_UIPropertyCategory" FromRole="UIPropertyCategory" ToRole="UIControlPropertyCategory" />
+          <NavigationProperty Name="UIPropertyCategory1" Relationship="Self.FK_UIPropertyCategory_UIPropertyCategory" FromRole="UIPropertyCategory" ToRole="UIPropertyCategory1" />
+          <NavigationProperty Name="UIPropertyCategory2" Relationship="Self.FK_UIPropertyCategory_UIPropertyCategory" FromRole="UIPropertyCategory1" ToRole="UIPropertyCategory" />
+          <NavigationProperty Name="UIPropertyPropertyCategories" Relationship="Self.FK_UIPropertyPropertyCategory_UIPropertyCategory" FromRole="UIPropertyCategory" ToRole="UIPropertyPropertyCategory" />
+        </EntityType>
+        <EntityType Name="UIPropertyPropertyCategory">
+          <Key>
+            <PropertyRef Name="UIPropertyPropertyCategoryID" />
+          </Key>
+          <Property Name="UIPropertyPropertyCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UIPropertyCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="UIPropertyID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UIProperty" Relationship="Self.FK_UIPropertyPropertyCategory_UIProperty" FromRole="UIPropertyPropertyCategory" ToRole="UIProperty" />
+          <NavigationProperty Name="UIPropertyCategory" Relationship="Self.FK_UIPropertyPropertyCategory_UIPropertyCategory" FromRole="UIPropertyPropertyCategory" ToRole="UIPropertyCategory" />
+          <NavigationProperty Name="UIThemePopertyColors" Relationship="Self.FK_UIThemePopertyColor_UIPropertyPropertyCategory" FromRole="UIPropertyPropertyCategory" ToRole="UIThemePopertyColor" />
+        </EntityType>
+        <EntityType Name="UITheme">
+          <Key>
+            <PropertyRef Name="UIThemeID" />
+          </Key>
+          <Property Name="UIThemeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UIThemeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="RetinaBackgroundImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NonRetinaBackgroundImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CompanyThemes" Relationship="Self.FK_CompanyTheme_UITheme" FromRole="UITheme" ToRole="CompanyTheme" />
+          <NavigationProperty Name="SiteThemes" Relationship="Self.FK_SiteTheme_UITheme" FromRole="UITheme" ToRole="SiteTheme" />
+        </EntityType>
+        <EntityType Name="UIThemePopertyColor">
+          <Key>
+            <PropertyRef Name="UIThemeID" />
+            <PropertyRef Name="UIPropertyPropertyCategoryID" />
+          </Key>
+          <Property Name="UIThemeID" Type="Int64" Nullable="false" />
+          <Property Name="UIPropertyPropertyCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UIPropertyPropertyCategory" Relationship="Self.FK_UIThemePopertyColor_UIPropertyPropertyCategory" FromRole="UIThemePopertyColor" ToRole="UIPropertyPropertyCategory" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleID" Type="Int16" Nullable="false" />
+          <Property Name="EmailId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_User_Company" FromRole="User" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Authentication">
+          <Key>
+            <PropertyRef Name="AuthToken" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="CreatedDateTime" />
+          </Key>
+          <Property Name="AuthToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK_CompanyAppImages_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="CompanyAppImages" Type="Self.CompanyAppImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="AppID" />
+            </Principal>
+            <Dependent Role="CompanyAppImages">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyTheme_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="CompanyTheme" Type="Self.CompanyTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="AppID" />
+            </Principal>
+            <Dependent Role="CompanyTheme">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteAppThemeType_Application1">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="SiteAppThemeType" Type="Self.SiteAppThemeType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="AppID" />
+            </Principal>
+            <Dependent Role="SiteAppThemeType">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteTheme_Application">
+          <End Role="Application" Type="Self.Application" Multiplicity="1" />
+          <End Role="SiteTheme" Type="Self.SiteTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="AppID" />
+            </Principal>
+            <Dependent Role="SiteTheme">
+              <PropertyRef Name="AppID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyAppImages_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyAppImages" Type="Self.CompanyAppImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="CompanyAppImages">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyTheme_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="CompanyTheme" Type="Self.CompanyTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="CompanyTheme">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Site_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Site" Type="Self.Site" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="Site">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteTheme_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="SiteTheme" Type="Self.SiteTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="SiteTheme">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CompanyTheme_UITheme">
+          <End Role="UITheme" Type="Self.UITheme" Multiplicity="1" />
+          <End Role="CompanyTheme" Type="Self.CompanyTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UITheme">
+              <PropertyRef Name="UIThemeID" />
+            </Principal>
+            <Dependent Role="CompanyTheme">
+              <PropertyRef Name="UIThemeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteTheme_Site">
+          <End Role="Site" Type="Self.Site" Multiplicity="1" />
+          <End Role="SiteTheme" Type="Self.SiteTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Site">
+              <PropertyRef Name="SiteID" />
+            </Principal>
+            <Dependent Role="SiteTheme">
+              <PropertyRef Name="SiteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SiteTheme_UITheme">
+          <End Role="UITheme" Type="Self.UITheme" Multiplicity="1" />
+          <End Role="SiteTheme" Type="Self.SiteTheme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UITheme">
+              <PropertyRef Name="UIThemeID" />
+            </Principal>
+            <Dependent Role="SiteTheme">
+              <PropertyRef Name="UIThemeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UIControlPropertyCategory_UIPropertyCategory">
+          <End Role="UIPropertyCategory" Type="Self.UIPropertyCategory" Multiplicity="1" />
+          <End Role="UIControlPropertyCategory" Type="Self.UIControlPropertyCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UIPropertyCategory">
+              <PropertyRef Name="UIPropertyCategoryID" />
+            </Principal>
+            <Dependent Role="UIControlPropertyCategory">
+              <PropertyRef Name="UIPropertyCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UIPropertyPropertyCategory_UIProperty">
+          <End Role="UIProperty" Type="Self.UIProperty" Multiplicity="1" />
+          <End Role="UIPropertyPropertyCategory" Type="Self.UIPropertyPropertyCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UIProperty">
+              <PropertyRef Name="UIPropertyID" />
+            </Principal>
+            <Dependent Role="UIPropertyPropertyCategory">
+              <PropertyRef Name="UIPropertyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UIPropertyCategory_UIPropertyCategory">
+          <End Role="UIPropertyCategory" Type="Self.UIPropertyCategory" Multiplicity="0..1" />
+          <End Role="UIPropertyCategory1" Type="Self.UIPropertyCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UIPropertyCategory">
+              <PropertyRef Name="UIPropertyCategoryID" />
+            </Principal>
+            <Dependent Role="UIPropertyCategory1">
+              <PropertyRef Name="UIPropertyCategoryParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UIPropertyPropertyCategory_UIPropertyCategory">
+          <End Role="UIPropertyCategory" Type="Self.UIPropertyCategory" Multiplicity="1" />
+          <End Role="UIPropertyPropertyCategory" Type="Self.UIPropertyPropertyCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UIPropertyCategory">
+              <PropertyRef Name="UIPropertyCategoryID" />
+            </Principal>
+            <Dependent Role="UIPropertyPropertyCategory">
+              <PropertyRef Name="UIPropertyCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UIThemePopertyColor_UIPropertyPropertyCategory">
+          <End Role="UIPropertyPropertyCategory" Type="Self.UIPropertyPropertyCategory" Multiplicity="1" />
+          <End Role="UIThemePopertyColor" Type="Self.UIThemePopertyColor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UIPropertyPropertyCategory">
+              <PropertyRef Name="UIPropertyPropertyCategoryID" />
+            </Principal>
+            <Dependent Role="UIThemePopertyColor">
+              <PropertyRef Name="UIPropertyPropertyCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CSIVangaurd_DevEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applications" EntityType="Self.Application" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="CompanyAppImages" EntityType="Self.CompanyAppImage" />
+          <EntitySet Name="CompanyAppInfoes" EntityType="Self.CompanyAppInfo" />
+          <EntitySet Name="CompanyThemes" EntityType="Self.CompanyTheme" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Sites" EntityType="Self.Site" />
+          <EntitySet Name="SiteAppThemeTypes" EntityType="Self.SiteAppThemeType" />
+          <EntitySet Name="SiteThemes" EntityType="Self.SiteTheme" />
+          <EntitySet Name="UIControls" EntityType="Self.UIControl" />
+          <EntitySet Name="UIControlPropertyCategories" EntityType="Self.UIControlPropertyCategory" />
+          <EntitySet Name="UIProperties" EntityType="Self.UIProperty" />
+          <EntitySet Name="UIPropertyCategories" EntityType="Self.UIPropertyCategory" />
+          <EntitySet Name="UIPropertyPropertyCategories" EntityType="Self.UIPropertyPropertyCategory" />
+          <EntitySet Name="UIThemes" EntityType="Self.UITheme" />
+          <EntitySet Name="UIThemePopertyColors" EntityType="Self.UIThemePopertyColor" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Authentications" EntityType="Self.Authentication" />
+          <AssociationSet Name="FK_CompanyAppImages_Application" Association="Self.FK_CompanyAppImages_Application">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="CompanyAppImages" EntitySet="CompanyAppImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyTheme_Application" Association="Self.FK_CompanyTheme_Application">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="CompanyTheme" EntitySet="CompanyThemes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteAppThemeType_Application1" Association="Self.FK_SiteAppThemeType_Application1">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="SiteAppThemeType" EntitySet="SiteAppThemeTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteTheme_Application" Association="Self.FK_SiteTheme_Application">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="SiteTheme" EntitySet="SiteThemes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyAppImages_Company" Association="Self.FK_CompanyAppImages_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CompanyAppImages" EntitySet="CompanyAppImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyTheme_Company" Association="Self.FK_CompanyTheme_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="CompanyTheme" EntitySet="CompanyThemes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Site_Company" Association="Self.FK_Site_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Site" EntitySet="Sites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteTheme_Company" Association="Self.FK_SiteTheme_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="SiteTheme" EntitySet="SiteThemes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Company" Association="Self.FK_User_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CompanyTheme_UITheme" Association="Self.FK_CompanyTheme_UITheme">
+            <End Role="UITheme" EntitySet="UIThemes" />
+            <End Role="CompanyTheme" EntitySet="CompanyThemes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteTheme_Site" Association="Self.FK_SiteTheme_Site">
+            <End Role="Site" EntitySet="Sites" />
+            <End Role="SiteTheme" EntitySet="SiteThemes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SiteTheme_UITheme" Association="Self.FK_SiteTheme_UITheme">
+            <End Role="UITheme" EntitySet="UIThemes" />
+            <End Role="SiteTheme" EntitySet="SiteThemes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UIControlPropertyCategory_UIPropertyCategory" Association="Self.FK_UIControlPropertyCategory_UIPropertyCategory">
+            <End Role="UIPropertyCategory" EntitySet="UIPropertyCategories" />
+            <End Role="UIControlPropertyCategory" EntitySet="UIControlPropertyCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UIPropertyPropertyCategory_UIProperty" Association="Self.FK_UIPropertyPropertyCategory_UIProperty">
+            <End Role="UIProperty" EntitySet="UIProperties" />
+            <End Role="UIPropertyPropertyCategory" EntitySet="UIPropertyPropertyCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UIPropertyCategory_UIPropertyCategory" Association="Self.FK_UIPropertyCategory_UIPropertyCategory">
+            <End Role="UIPropertyCategory" EntitySet="UIPropertyCategories" />
+            <End Role="UIPropertyCategory1" EntitySet="UIPropertyCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UIPropertyPropertyCategory_UIPropertyCategory" Association="Self.FK_UIPropertyPropertyCategory_UIPropertyCategory">
+            <End Role="UIPropertyCategory" EntitySet="UIPropertyCategories" />
+            <End Role="UIPropertyPropertyCategory" EntitySet="UIPropertyPropertyCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UIThemePopertyColor_UIPropertyPropertyCategory" Association="Self.FK_UIThemePopertyColor_UIPropertyPropertyCategory">
+            <End Role="UIPropertyPropertyCategory" EntitySet="UIPropertyPropertyCategories" />
+            <End Role="UIThemePopertyColor" EntitySet="UIThemePopertyColors" />
+          </AssociationSet>
+          <FunctionImport Name="uspAddAppImages">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="lvAppID" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="lvCreatedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddAppInfo">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="lvAppID" Mode="In" Type="Int32" />
+            <Parameter Name="CompanyAppName" Mode="In" Type="String" />
+            <Parameter Name="CompanyAppDescription" Mode="In" Type="String" />
+            <Parameter Name="CompanyAppRetinaIconURL" Mode="In" Type="String" />
+            <Parameter Name="CompanyAppNonRetinaIconURL" Mode="In" Type="String" />
+            <Parameter Name="IconColor" Mode="In" Type="String" />
+            <Parameter Name="RetinaSplashScreenURL" Mode="In" Type="String" />
+            <Parameter Name="NonRetinaSplashScreenURL" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="lvCreatedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedCompanyAppName" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddAuthentication">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="AuthToken" Mode="In" Type="String" />
+            <Parameter Name="AddedAuthToken" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddCompany">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="ForgotUserNameURL" Mode="In" Type="String" />
+            <Parameter Name="ForgotPasswordURL" Mode="In" Type="String" />
+            <Parameter Name="FeedBackEmailId" Mode="In" Type="String" />
+            <Parameter Name="APIKey" Mode="In" Type="String" />
+            <Parameter Name="DataSourceURL" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="lvCreatedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="CreatedCompanyID" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddCompanyTheme">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="lvAppID" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedUIThemeID" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="lvCreatedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddSite">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="lvCreatedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddSiteAppThemeType">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="lvCreatedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddSiteTheme">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="SiteID" Mode="In" Type="Int32" />
+            <Parameter Name="lvAppID" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedUIThemeID" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="lvCreatedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddUITheme">
+            <Parameter Name="UIThemeName" Mode="In" Type="String" />
+            <Parameter Name="RetinaBackgroundImageURL" Mode="In" Type="String" />
+            <Parameter Name="NonRetinaBackgroundImageURL" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="lvCreatedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddUIThemePopertyColor">
+            <Parameter Name="CreatedUIThemeID" Mode="In" Type="Int32" />
+            <Parameter Name="lvAppID" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="lvCreatedDateTime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="uspAddUser">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="RoleID" Mode="In" Type="Int32" />
+            <Parameter Name="EmailId" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="lvCreatedDateTime" Mode="In" Type="DateTime" />
+            <Parameter Name="UserID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspDeleteAuthentication">
+            <Parameter Name="AuthToken" Mode="In" Type="String" />
+            <Parameter Name="isDeleted" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="uspDeleteCompany">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetAllAppType" ReturnType="Collection(CSIVangaurd_DevModel.uspGetAllAppType_Result)" />
+          <FunctionImport Name="uspGetAllSiteThemeType" ReturnType="Collection(CSIVangaurd_DevModel.uspGetAllSiteThemeType_Result)">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetAllUIPropertyCategory" ReturnType="Collection(CSIVangaurd_DevModel.uspGetAllUIPropertyCategory_Result)" />
+          <FunctionImport Name="uspGetAppConfig" ReturnType="Collection(CSIVangaurd_DevModel.uspGetAppConfig_Result)">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetAuthenticationDetails">
+            <Parameter Name="AuthToken" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetCompanyBrandConfigDetails" ReturnType="Collection(CSIVangaurd_DevModel.uspGetCompanyBrandConfigDetails_Result)">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetCompanyDetails" ReturnType="Collection(CSIVangaurd_DevModel.uspGetCompanyDetails_Result)">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetCompanyThemeDetails1">
+            <Parameter Name="CompanyID" Mode="In" Type="Int32" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetCompanyThemes" ReturnType="Collection(CSIVangaurd_DevModel.uspGetCompanyThemes_Result)">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetCompanyUIPropertyColor" ReturnType="Collection(CSIVangaurd_DevModel.uspGetCompanyUIPropertyColor_Result)">
+            <Parameter Name="UIPropertyCategoryID" Mode="In" Type="Int32" />
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetSiteBrandConfigDetails" ReturnType="Collection(CSIVangaurd_DevModel.uspGetSiteBrandConfigDetails_Result)">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="SiteID" Mode="In" Type="Int32" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetSiteThemes" ReturnType="Collection(CSIVangaurd_DevModel.uspGetSiteThemes_Result)">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="SiteID" Mode="In" Type="Int32" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetSiteUIPropertyColor" ReturnType="Collection(CSIVangaurd_DevModel.uspGetSiteUIPropertyColor_Result)">
+            <Parameter Name="UIPropertyCategoryID" Mode="In" Type="Int32" />
+            <Parameter Name="SiteID" Mode="In" Type="Int32" />
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetThemeDetails">
+            <Parameter Name="UIThemeID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetUIControl" ReturnType="Collection(CSIVangaurd_DevModel.uspGetUIControl_Result)">
+            <Parameter Name="UIPropertyCategoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspGetUserDetails" ReturnType="Collection(CSIVangaurd_DevModel.uspGetUserDetails_Result)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspPagedCompanies" ReturnType="Collection(CSIVangaurd_DevModel.uspPagedCompanies_Result)">
+            <Parameter Name="StartIndex" Mode="In" Type="Int16" />
+            <Parameter Name="NoOfRows" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="uspRegisterCompanyUser">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="ForgotUserNameURL" Mode="In" Type="String" />
+            <Parameter Name="ForgotPasswordURL" Mode="In" Type="String" />
+            <Parameter Name="FeedBackEmailId" Mode="In" Type="String" />
+            <Parameter Name="APIKey" Mode="In" Type="String" />
+            <Parameter Name="DataSourceURL" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="EmailId" Mode="In" Type="String" />
+            <Parameter Name="RoleID" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedCompanyID" Mode="InOut" Type="String" />
+            <Parameter Name="UserID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspRegisterCompanyUser2">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="ForgotUserNameURL" Mode="In" Type="String" />
+            <Parameter Name="ForgotPasswordURL" Mode="In" Type="String" />
+            <Parameter Name="FeedBackEmailId" Mode="In" Type="String" />
+            <Parameter Name="APIKey" Mode="In" Type="String" />
+            <Parameter Name="DataSourceURL" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="EmailId" Mode="In" Type="String" />
+            <Parameter Name="RoleID" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedCompanyID" Mode="InOut" Type="String" />
+            <Parameter Name="UserID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspSaveAppConfig">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+            <Parameter Name="CompanyAppName" Mode="In" Type="String" />
+            <Parameter Name="CompanyAppDescription" Mode="In" Type="String" />
+            <Parameter Name="CompanyAppRetinaIconURL" Mode="In" Type="String" />
+            <Parameter Name="CompanyAppNonRetinaIconURL" Mode="In" Type="String" />
+            <Parameter Name="IconColor" Mode="In" Type="String" />
+            <Parameter Name="RetinaSplashScreenURL" Mode="In" Type="String" />
+            <Parameter Name="NonRetinaSplashScreenURL" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="CreatedCompanyAppName" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspSaveCompanyBrandConfig">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+            <Parameter Name="RetinaBackgroundImageURL" Mode="In" Type="String" />
+            <Parameter Name="NonRetinaBackgroundImageURL" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UIThemeID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="uspSaveSiteBrandConfig">
+            <Parameter Name="CompanyID" Mode="In" Type="String" />
+            <Parameter Name="SiteID" Mode="In" Type="Int32" />
+            <Parameter Name="AppType" Mode="In" Type="String" />
+            <Parameter Name="RetinaBackgroundImageURL" Mode="In" Type="String" />
+            <Parameter Name="NonRetinaBackgroundImageURL" Mode="In" Type="String" />
+            <Parameter Name="CreatedBy" Mode="In" Type="Int32" />
+            <Parameter Name="UIThemeID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="uspGetAllAppType_Result">
+          <Property Type="Int32" Name="AppID" Nullable="false" />
+          <Property Type="String" Name="AppType" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspGetAllSiteThemeType_Result">
+          <Property Type="Int32" Name="SiteID" Nullable="false" />
+          <Property Type="String" Name="SiteName" Nullable="false" MaxLength="255" />
+          <Property Type="Boolean" Name="hasDefaultTheme" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="uspGetAllUIPropertyCategory_Result">
+          <Property Type="Int32" Name="UIPropertyCategoryID" Nullable="false" />
+          <Property Type="String" Name="UIPropertyCategoryName" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspGetAppConfig_Result">
+          <Property Type="String" Name="ApplicationName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ApplicationDescription" Nullable="false" />
+          <Property Type="String" Name="IconColor" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="RetinaAppIconURL" Nullable="false" />
+          <Property Type="String" Name="NonRetinaAppIconURL" Nullable="false" />
+          <Property Type="String" Name="RetinaSplashScreenURL" Nullable="false" />
+          <Property Type="String" Name="NonRetinaSplashScreenURL" Nullable="false" />
+          <Property Type="String" Name="ImagesURL" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="uspGetCompanyBrandConfigDetails_Result">
+          <Property Type="String" Name="RetinaBackgroundImageURL" Nullable="false" />
+          <Property Type="String" Name="NonRetinaBackgroundImageURL" Nullable="false" />
+          <Property Type="String" Name="UIPropertyCategoryName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="UIPropertyName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Color" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspGetCompanyDetails_Result">
+          <Property Type="String" Name="CompanyID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="APIKey" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="EmailId" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="uspGetCompanyThemes_Result">
+          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="UIThemeName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ApplicationName" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspGetCompanyUIPropertyColor_Result">
+          <Property Type="Int32" Name="PropertyID" Nullable="false" />
+          <Property Type="String" Name="PropertyName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Color" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspGetSiteBrandConfigDetails_Result">
+          <Property Type="String" Name="RetinaBackgroundImageURL" Nullable="false" />
+          <Property Type="String" Name="NonRetinaBackgroundImageURL" Nullable="false" />
+          <Property Type="String" Name="UIPropertyCategoryName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="UIPropertyName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Color" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspGetSiteThemes_Result">
+          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="SiteName" Nullable="false" MaxLength="255" />
+          <Property Type="DateTime" Name="CreatedDateTime" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UIThemeName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="ApplicationName" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspGetSiteUIPropertyColor_Result">
+          <Property Type="Int32" Name="PropertyID" Nullable="false" />
+          <Property Type="String" Name="PropertyName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Color" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspGetUIControl_Result">
+          <Property Type="Int32" Name="ControlID" Nullable="false" />
+          <Property Type="String" Name="ControlName" Nullable="false" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="uspGetUserDetails_Result">
+          <Property Type="String" Name="CompanyID" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="255" />
+          <Property Type="Int16" Name="RoleID" Nullable="false" />
+          <Property Type="String" Name="EmailId" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="uspPagedCompanies_Result">
+          <Property Type="String" Name="CompanyID" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="255" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CSIVangaurd_DevModelStoreContainer" CdmEntityContainer="CSIVangaurd_DevEntities">
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="ApplicationDescription" ColumnName="ApplicationDescription" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="APIKey" ColumnName="APIKey" />
+                <ScalarProperty Name="DataSourceURL" ColumnName="DataSourceURL" />
+                <ScalarProperty Name="ForgotUserNameURL" ColumnName="ForgotUserNameURL" />
+                <ScalarProperty Name="ForgotPasswordURL" ColumnName="ForgotPasswordURL" />
+                <ScalarProperty Name="FeedBackEmailId" ColumnName="FeedBackEmailId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyAppImages">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.CompanyAppImage">
+              <MappingFragment StoreEntitySet="CompanyAppImages">
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyAppInfoes">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.CompanyAppInfo">
+              <MappingFragment StoreEntitySet="CompanyAppInfo">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="CompanyAppName" ColumnName="CompanyAppName" />
+                <ScalarProperty Name="CompanyAppDescription" ColumnName="CompanyAppDescription" />
+                <ScalarProperty Name="CompanyAppRetinaIconURL" ColumnName="CompanyAppRetinaIconURL" />
+                <ScalarProperty Name="CompanyAppNonRetinaIconURL" ColumnName="CompanyAppNonRetinaIconURL" />
+                <ScalarProperty Name="IconColor" ColumnName="IconColor" />
+                <ScalarProperty Name="RetinaSplashScreenURL" ColumnName="RetinaSplashScreenURL" />
+                <ScalarProperty Name="NonRetinaSplashScreenURL" ColumnName="NonRetinaSplashScreenURL" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdaedDateTime" ColumnName="UpdaedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyThemes">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.CompanyTheme">
+              <MappingFragment StoreEntitySet="CompanyTheme">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="UIThemeID" ColumnName="UIThemeID" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="AppliedAt" ColumnName="AppliedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sites">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.Site">
+              <MappingFragment StoreEntitySet="Site">
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteAppThemeTypes">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.SiteAppThemeType">
+              <MappingFragment StoreEntitySet="SiteAppThemeType">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="hasDefaultTheme" ColumnName="hasDefaultTheme" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteThemes">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.SiteTheme">
+              <MappingFragment StoreEntitySet="SiteTheme">
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="UIThemeID" ColumnName="UIThemeID" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="AppliedAt" ColumnName="AppliedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UIControls">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.UIControl">
+              <MappingFragment StoreEntitySet="UIControl">
+                <ScalarProperty Name="UIControlID" ColumnName="UIControlID" />
+                <ScalarProperty Name="UIControlName" ColumnName="UIControlName" />
+                <ScalarProperty Name="AllowToCustomise" ColumnName="AllowToCustomise" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UIControlPropertyCategories">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.UIControlPropertyCategory">
+              <MappingFragment StoreEntitySet="UIControlPropertyCategory">
+                <ScalarProperty Name="UIControlPropertyID" ColumnName="UIControlPropertyID" />
+                <ScalarProperty Name="UIControlID" ColumnName="UIControlID" />
+                <ScalarProperty Name="UIPropertyCategoryID" ColumnName="UIPropertyCategoryID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UIProperties">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.UIProperty">
+              <MappingFragment StoreEntitySet="UIProperty">
+                <ScalarProperty Name="UIPropertyID" ColumnName="UIPropertyID" />
+                <ScalarProperty Name="UIPropertyName" ColumnName="UIPropertyName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDatetime" ColumnName="UpdatedDatetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UIPropertyCategories">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.UIPropertyCategory">
+              <MappingFragment StoreEntitySet="UIPropertyCategory">
+                <ScalarProperty Name="UIPropertyCategoryID" ColumnName="UIPropertyCategoryID" />
+                <ScalarProperty Name="UIPropertyCategoryName" ColumnName="UIPropertyCategoryName" />
+                <ScalarProperty Name="UIPropertyCategoryParent" ColumnName="UIPropertyCategoryParent" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UIPropertyPropertyCategories">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.UIPropertyPropertyCategory">
+              <MappingFragment StoreEntitySet="UIPropertyPropertyCategory">
+                <ScalarProperty Name="UIPropertyPropertyCategoryID" ColumnName="UIPropertyPropertyCategoryID" />
+                <ScalarProperty Name="UIPropertyCategoryID" ColumnName="UIPropertyCategoryID" />
+                <ScalarProperty Name="UIPropertyID" ColumnName="UIPropertyID" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UIThemes">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.UITheme">
+              <MappingFragment StoreEntitySet="UITheme">
+                <ScalarProperty Name="UIThemeID" ColumnName="UIThemeID" />
+                <ScalarProperty Name="UIThemeName" ColumnName="UIThemeName" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="RetinaBackgroundImageURL" ColumnName="RetinaBackgroundImageURL" />
+                <ScalarProperty Name="NonRetinaBackgroundImageURL" ColumnName="NonRetinaBackgroundImageURL" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UIThemePopertyColors">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.UIThemePopertyColor">
+              <MappingFragment StoreEntitySet="UIThemePopertyColor">
+                <ScalarProperty Name="UIThemeID" ColumnName="UIThemeID" />
+                <ScalarProperty Name="UIPropertyPropertyCategoryID" ColumnName="UIPropertyPropertyCategoryID" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authentications">
+            <EntityTypeMapping TypeName="CSIVangaurd_DevModel.Authentication">
+              <MappingFragment StoreEntitySet="Authentication">
+                <ScalarProperty Name="AuthToken" ColumnName="AuthToken" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="uspAddAppImages" FunctionName="CSIVangaurd_DevModel.Store.uspAddAppImages" />
+          <FunctionImportMapping FunctionImportName="uspAddAppInfo" FunctionName="CSIVangaurd_DevModel.Store.uspAddAppInfo" />
+          <FunctionImportMapping FunctionImportName="uspAddAuthentication" FunctionName="CSIVangaurd_DevModel.Store.uspAddAuthentication" />
+          <FunctionImportMapping FunctionImportName="uspAddCompany" FunctionName="CSIVangaurd_DevModel.Store.uspAddCompany" />
+          <FunctionImportMapping FunctionImportName="uspAddCompanyTheme" FunctionName="CSIVangaurd_DevModel.Store.uspAddCompanyTheme" />
+          <FunctionImportMapping FunctionImportName="uspAddSite" FunctionName="CSIVangaurd_DevModel.Store.uspAddSite" />
+          <FunctionImportMapping FunctionImportName="uspAddSiteAppThemeType" FunctionName="CSIVangaurd_DevModel.Store.uspAddSiteAppThemeType" />
+          <FunctionImportMapping FunctionImportName="uspAddSiteTheme" FunctionName="CSIVangaurd_DevModel.Store.uspAddSiteTheme" />
+          <FunctionImportMapping FunctionImportName="uspAddUITheme" FunctionName="CSIVangaurd_DevModel.Store.uspAddUITheme" />
+          <FunctionImportMapping FunctionImportName="uspAddUIThemePopertyColor" FunctionName="CSIVangaurd_DevModel.Store.uspAddUIThemePopertyColor" />
+          <FunctionImportMapping FunctionImportName="uspAddUser" FunctionName="CSIVangaurd_DevModel.Store.uspAddUser" />
+          <FunctionImportMapping FunctionImportName="uspDeleteAuthentication" FunctionName="CSIVangaurd_DevModel.Store.uspDeleteAuthentication" />
+          <FunctionImportMapping FunctionImportName="uspDeleteCompany" FunctionName="CSIVangaurd_DevModel.Store.uspDeleteCompany" />
+          <FunctionImportMapping FunctionImportName="uspGetAllAppType" FunctionName="CSIVangaurd_DevModel.Store.uspGetAllAppType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetAllAppType_Result">
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="AppType" ColumnName="AppType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetAllSiteThemeType" FunctionName="CSIVangaurd_DevModel.Store.uspGetAllSiteThemeType">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetAllSiteThemeType_Result">
+                <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="hasDefaultTheme" ColumnName="hasDefaultTheme" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetAllUIPropertyCategory" FunctionName="CSIVangaurd_DevModel.Store.uspGetAllUIPropertyCategory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetAllUIPropertyCategory_Result">
+                <ScalarProperty Name="UIPropertyCategoryID" ColumnName="UIPropertyCategoryID" />
+                <ScalarProperty Name="UIPropertyCategoryName" ColumnName="UIPropertyCategoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetAppConfig" FunctionName="CSIVangaurd_DevModel.Store.uspGetAppConfig">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetAppConfig_Result">
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+                <ScalarProperty Name="ApplicationDescription" ColumnName="ApplicationDescription" />
+                <ScalarProperty Name="IconColor" ColumnName="IconColor" />
+                <ScalarProperty Name="RetinaAppIconURL" ColumnName="RetinaAppIconURL" />
+                <ScalarProperty Name="NonRetinaAppIconURL" ColumnName="NonRetinaAppIconURL" />
+                <ScalarProperty Name="RetinaSplashScreenURL" ColumnName="RetinaSplashScreenURL" />
+                <ScalarProperty Name="NonRetinaSplashScreenURL" ColumnName="NonRetinaSplashScreenURL" />
+                <ScalarProperty Name="ImagesURL" ColumnName="ImagesURL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetAuthenticationDetails" FunctionName="CSIVangaurd_DevModel.Store.uspGetAuthenticationDetails" />
+          <FunctionImportMapping FunctionImportName="uspGetCompanyBrandConfigDetails" FunctionName="CSIVangaurd_DevModel.Store.uspGetCompanyBrandConfigDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetCompanyBrandConfigDetails_Result">
+                <ScalarProperty Name="RetinaBackgroundImageURL" ColumnName="RetinaBackgroundImageURL" />
+                <ScalarProperty Name="NonRetinaBackgroundImageURL" ColumnName="NonRetinaBackgroundImageURL" />
+                <ScalarProperty Name="UIPropertyCategoryName" ColumnName="UIPropertyCategoryName" />
+                <ScalarProperty Name="UIPropertyName" ColumnName="UIPropertyName" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetCompanyDetails" FunctionName="CSIVangaurd_DevModel.Store.uspGetCompanyDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetCompanyDetails_Result">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="APIKey" ColumnName="APIKey" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetCompanyThemeDetails1" FunctionName="CSIVangaurd_DevModel.Store.uspGetCompanyThemeDetails1" />
+          <FunctionImportMapping FunctionImportName="uspGetCompanyThemes" FunctionName="CSIVangaurd_DevModel.Store.uspGetCompanyThemes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetCompanyThemes_Result">
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="UIThemeName" ColumnName="UIThemeName" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetCompanyUIPropertyColor" FunctionName="CSIVangaurd_DevModel.Store.uspGetCompanyUIPropertyColor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetCompanyUIPropertyColor_Result">
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetSiteBrandConfigDetails" FunctionName="CSIVangaurd_DevModel.Store.uspGetSiteBrandConfigDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetSiteBrandConfigDetails_Result">
+                <ScalarProperty Name="RetinaBackgroundImageURL" ColumnName="RetinaBackgroundImageURL" />
+                <ScalarProperty Name="NonRetinaBackgroundImageURL" ColumnName="NonRetinaBackgroundImageURL" />
+                <ScalarProperty Name="UIPropertyCategoryName" ColumnName="UIPropertyCategoryName" />
+                <ScalarProperty Name="UIPropertyName" ColumnName="UIPropertyName" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetSiteThemes" FunctionName="CSIVangaurd_DevModel.Store.uspGetSiteThemes">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetSiteThemes_Result">
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="UIThemeName" ColumnName="UIThemeName" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetSiteUIPropertyColor" FunctionName="CSIVangaurd_DevModel.Store.uspGetSiteUIPropertyColor">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetSiteUIPropertyColor_Result">
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetThemeDetails" FunctionName="CSIVangaurd_DevModel.Store.uspGetThemeDetails" />
+          <FunctionImportMapping FunctionImportName="uspGetUIControl" FunctionName="CSIVangaurd_DevModel.Store.uspGetUIControl">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetUIControl_Result">
+                <ScalarProperty Name="ControlID" ColumnName="ControlID" />
+                <ScalarProperty Name="ControlName" ColumnName="ControlName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGetUserDetails" FunctionName="CSIVangaurd_DevModel.Store.uspGetUserDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspGetUserDetails_Result">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspPagedCompanies" FunctionName="CSIVangaurd_DevModel.Store.uspPagedCompanies">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CSIVangaurd_DevModel.uspPagedCompanies_Result">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspRegisterCompanyUser" FunctionName="CSIVangaurd_DevModel.Store.uspRegisterCompanyUser" />
+          <FunctionImportMapping FunctionImportName="uspRegisterCompanyUser2" FunctionName="CSIVangaurd_DevModel.Store.uspRegisterCompanyUser2" />
+          <FunctionImportMapping FunctionImportName="uspSaveAppConfig" FunctionName="CSIVangaurd_DevModel.Store.uspSaveAppConfig" />
+          <FunctionImportMapping FunctionImportName="uspSaveCompanyBrandConfig" FunctionName="CSIVangaurd_DevModel.Store.uspSaveCompanyBrandConfig" />
+          <FunctionImportMapping FunctionImportName="uspSaveSiteBrandConfig" FunctionName="CSIVangaurd_DevModel.Store.uspSaveSiteBrandConfig" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

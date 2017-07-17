@@ -1,0 +1,9 @@
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Release\ClubNYITDataAccess.dll.config
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Release\ClubNYITDataAccess.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Release\ClubNYITDataAccess.pdb
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Release\EntityFramework.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Release\EntityFramework.xml
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\obj\Release\ClubNYITDataAccess.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\obj\Release\ClubNYITDataAccess.pdb

@@ -1,0 +1,4 @@
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataTransferObjects\bin\Debug\ClubNYITDataTransferObjects.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataTransferObjects\bin\Debug\ClubNYITDataTransferObjects.pdb
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataTransferObjects\obj\Debug\ClubNYITDataTransferObjects.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataTransferObjects\obj\Debug\ClubNYITDataTransferObjects.pdb

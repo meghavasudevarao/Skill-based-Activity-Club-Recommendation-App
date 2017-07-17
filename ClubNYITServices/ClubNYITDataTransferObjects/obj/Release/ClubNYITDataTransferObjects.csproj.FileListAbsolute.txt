@@ -1,0 +1,5 @@
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataTransferObjects\bin\Release\ClubNYITDataTransferObjects.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataTransferObjects\bin\Release\ClubNYITDataTransferObjects.pdb
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataTransferObjects\obj\Release\ClubNYITDataTransferObjects.csprojResolveAssemblyReference.cache
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataTransferObjects\obj\Release\ClubNYITDataTransferObjects.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataTransferObjects\obj\Release\ClubNYITDataTransferObjects.pdb

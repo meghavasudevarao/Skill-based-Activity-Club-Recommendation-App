@@ -1,0 +1,8 @@
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\Test\bin\Debug\Test.exe.config
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\Test\bin\Debug\Test.exe
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\Test\bin\Debug\Test.pdb
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\Test\bin\Debug\TextMiner.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\Test\bin\Debug\TextMiner.pdb
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\Test\obj\Debug\Test.exe
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\Test\obj\Debug\Test.pdb

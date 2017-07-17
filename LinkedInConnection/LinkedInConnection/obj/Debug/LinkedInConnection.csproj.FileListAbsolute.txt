@@ -1,0 +1,15 @@
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\LinkedInConnection.exe.config
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\LinkedInConnection.exe
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\LinkedInConnection.pdb
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\DotNetOpenAuth.dll
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\LinkedIn.NET.dll
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\DotNetOpenAuth.xml
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\LinkedIn.NET.xml
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\obj\Debug\LinkedInConnection.csproj.App.config
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\obj\Debug\LinkedInConnection.csprojResolveAssemblyReference.cache
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\obj\Debug\LinkedInConnection.exe
+C:\Users\raome\Desktop\C#Trials\LinkedInConnection\LinkedInConnection\obj\Debug\LinkedInConnection.pdb

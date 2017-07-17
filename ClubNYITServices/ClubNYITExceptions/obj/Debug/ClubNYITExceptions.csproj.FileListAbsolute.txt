@@ -1,0 +1,4 @@
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITExceptions\bin\Debug\ClubNYITExceptions.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITExceptions\bin\Debug\ClubNYITExceptions.pdb
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITExceptions\obj\Debug\ClubNYITExceptions.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITExceptions\obj\Debug\ClubNYITExceptions.pdb

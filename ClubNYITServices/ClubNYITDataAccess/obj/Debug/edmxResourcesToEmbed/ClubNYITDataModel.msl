@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CNyitModelStoreContainer" CdmEntityContainer="CNyitEntities">
+    <EntitySetMapping Name="ClubDetails">
+      <EntityTypeMapping TypeName="CNyitModel.ClubDetail">
+        <MappingFragment StoreEntitySet="ClubDetail">
+          <ScalarProperty Name="ClubGUID" ColumnName="ClubGUID" />
+          <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+          <ScalarProperty Name="ClubName" ColumnName="ClubName" />
+          <ScalarProperty Name="ClubLogo" ColumnName="ClubLogo" />
+          <ScalarProperty Name="ClubDescription" ColumnName="ClubDescription" />
+          <ScalarProperty Name="ClubLocation" ColumnName="ClubLocation" />
+          <ScalarProperty Name="Advisor" ColumnName="Advisor" />
+          <ScalarProperty Name="MeetingDates" ColumnName="MeetingDates" />
+          <ScalarProperty Name="Internatinal" ColumnName="Internatinal" />
+          <ScalarProperty Name="Technology" ColumnName="Technology" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventDetails">
+      <EntityTypeMapping TypeName="CNyitModel.EventDetail">
+        <MappingFragment StoreEntitySet="EventDetail">
+          <ScalarProperty Name="EventGUID" ColumnName="EventGUID" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Club" ColumnName="Club" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Cordinator" ColumnName="Cordinator" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserClubDetails">
+      <EntityTypeMapping TypeName="CNyitModel.UserClubDetail">
+        <MappingFragment StoreEntitySet="UserClubDetail">
+          <ScalarProperty Name="UserClubID" ColumnName="UserClubID" />
+          <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserClubRoleDetails">
+      <EntityTypeMapping TypeName="CNyitModel.UserClubRoleDetail">
+        <MappingFragment StoreEntitySet="UserClubRoleDetail">
+          <ScalarProperty Name="UserClubRoleID" ColumnName="UserClubRoleID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="CNyitModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetail">
+          <ScalarProperty Name="UserGUID" ColumnName="UserGUID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="nyitEmailID" ColumnName="nyitEmailID" />
+          <ScalarProperty Name="LinkedInUserID" ColumnName="LinkedInUserID" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Aluminus" ColumnName="Aluminus" />
+          <ScalarProperty Name="Major" ColumnName="Major" />
+          <ScalarProperty Name="Natinality" ColumnName="Natinality" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleDetails">
+      <EntityTypeMapping TypeName="CNyitModel.RoleDetail">
+        <MappingFragment StoreEntitySet="RoleDetail">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

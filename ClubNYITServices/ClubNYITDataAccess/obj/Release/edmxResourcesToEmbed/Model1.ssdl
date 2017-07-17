@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CNyitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ClubDetail">
+    <Key>
+      <PropertyRef Name="ClubGUID" />
+    </Key>
+    <Property Name="ClubGUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ClubID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClubName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ClubLogo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClubDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ClubLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Advisor" Type="bigint" Nullable="false" />
+    <Property Name="MeetingDates" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Internatinal" Type="bit" Nullable="false" />
+    <Property Name="Technology" Type="bit" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EventDetail">
+    <Key>
+      <PropertyRef Name="EventGUID" />
+    </Key>
+    <Property Name="EventGUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="EventID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Club" Type="bigint" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Cordinator" Type="bigint" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Hidden" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CNyit.dbo.RoleDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RoleDetail">
+    <Key>
+      <PropertyRef Name="RoleID" />
+      <PropertyRef Name="RoleName" />
+    </Key>
+    <Property Name="RoleID" Type="int" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserClubDetail">
+    <Key>
+      <PropertyRef Name="UserClubID" />
+    </Key>
+    <Property Name="UserClubID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClubID" Type="bigint" Nullable="false" />
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserClubRoleDetail">
+    <Key>
+      <PropertyRef Name="UserClubRoleID" />
+    </Key>
+    <Property Name="UserClubRoleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="bigint" Nullable="false" />
+    <Property Name="ClubID" Type="bigint" Nullable="false" />
+    <Property Name="RoleID" Type="bigint" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserDetail">
+    <Key>
+      <PropertyRef Name="UserGUID" />
+    </Key>
+    <Property Name="UserGUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateOfBirth" Type="date" Nullable="false" />
+    <Property Name="StudentID" Type="bigint" />
+    <Property Name="EmployeeID" Type="bigint" />
+    <Property Name="nyitEmailID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LinkedInUserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="int" Nullable="false" />
+    <Property Name="Aluminus" Type="bit" Nullable="false" />
+    <Property Name="Major" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Natinality" Type="int" Nullable="false" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_ClubDetail_UserDetail' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_ClubDetail_UserDetail" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_EventDetail_ClubDetail' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_EventDetail_ClubDetail" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_EventDetail_UserDetail' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_EventDetail_UserDetail" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_UserClubDetail_ClubDetail' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_UserClubDetail_ClubDetail" />-->
+  <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_UserClubDetail_UserDetail' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_UserClubDetail_UserDetail" />-->
+  <EntityContainer Name="CNyitModelStoreContainer">
+    <EntitySet Name="ClubDetail" EntityType="Self.ClubDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventDetail" EntityType="Self.EventDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserClubDetail" EntityType="Self.UserClubDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserClubRoleDetail" EntityType="Self.UserClubRoleDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleDetail" EntityType="Self.RoleDetail" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RoleDetail].[RoleID] AS [RoleID], 
+    [RoleDetail].[RoleName] AS [RoleName]
+    FROM [dbo].[RoleDetail] AS [RoleDetail]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

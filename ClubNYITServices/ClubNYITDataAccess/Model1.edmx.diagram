@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="958cc71e5c73430f90d65f750d2165bc" Name="Diagram1">
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.Application" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.Company" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.CompanyAppImage" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.CompanyAppInfo" Width="1.5" PointX="5.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.CompanyTheme" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.Role" Width="1.5" PointX="8.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.Site" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.SiteAppThemeType" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.SiteTheme" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.UIControl" Width="1.5" PointX="8.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.UIControlPropertyCategory" Width="1.5" PointX="11" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.UIProperty" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.UIPropertyCategory" Width="1.5" PointX="8.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.UIPropertyPropertyCategory" Width="1.5" PointX="14" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.UITheme" Width="1.5" PointX="3.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.UIThemePopertyColor" Width="1.5" PointX="16.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.User" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CSIVangaurd_DevModel.Authentication" Width="1.5" PointX="10.75" PointY="8.375" IsExpanded="true" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_CompanyAppImages_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_CompanyTheme_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_SiteAppThemeType_Application1" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_SiteTheme_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_CompanyAppImages_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_CompanyTheme_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_Site_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_SiteTheme_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_User_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_CompanyTheme_UITheme" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_SiteTheme_Site" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_SiteTheme_UITheme" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_UIControlPropertyCategory_UIPropertyCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_UIPropertyPropertyCategory_UIProperty" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_UIPropertyCategory_UIPropertyCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_UIPropertyPropertyCategory_UIPropertyCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="CSIVangaurd_DevModel.FK_UIThemePopertyColor_UIPropertyPropertyCategory" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

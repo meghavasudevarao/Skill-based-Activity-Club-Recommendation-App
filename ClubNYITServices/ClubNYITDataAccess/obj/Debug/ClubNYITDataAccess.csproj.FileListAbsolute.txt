@@ -1,0 +1,12 @@
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Debug\ClubNYITDataAccess.dll.config
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Debug\ClubNYITDataAccess.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Debug\ClubNYITDataAccess.pdb
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Debug\EntityFramework.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Debug\EntityFramework.xml
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\obj\Debug\ClubNYITDataAccess.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\obj\Debug\ClubNYITDataAccess.pdb
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\obj\Debug\ClubNYITDataAccess.csprojResolveAssemblyReference.cache
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Debug\ClubNYITExceptions.dll
+C:\Users\raome\Desktop\C#Trials\ClubNYITServices\ClubNYITDataAccess\bin\Debug\ClubNYITExceptions.pdb
